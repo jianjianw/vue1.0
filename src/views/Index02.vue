@@ -2,64 +2,49 @@
     <div class="layout">
         <Row type="flex">
             <i-col span="5" class="layout-menu-left">
-                <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']">
-                    <div class="layout-logo-left">
-                        这是logo
-                    </div>
-                    <Submenu name="1">
-                        <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            导航一
-                        </template>
-                        <Menu-item name="1-1">选项 1</Menu-item>
-                        <Menu-item name="1-2">选项 2</Menu-item>
-                        <Menu-item name="1-3">选项 3</Menu-item>
-                    </Submenu>
-                    <Submenu name="2">
-                        <template slot="title">
-                            <Icon type="ios-keypad"></Icon>
-                            导航二
-                        </template>
-                        <Menu-item name="2-1">选项 1</Menu-item>
-                        <Menu-item name="2-2">选项 2</Menu-item>
-                    </Submenu>
-                    <Submenu name="3">
-                        <template slot="title">
-                            <Icon type="ios-analytics"></Icon>
-                            导航三
-                        </template>
-                        <Menu-item name="3-1">选项 1</Menu-item>
-                        <Menu-item name="3-2">选项 2</Menu-item>
-                    </Submenu>
-                </Menu>
+                <left-page/>
             </i-col>
             <i-col span="19">
-                <div class="layout-header">
-                    <Row>
-                        <Col span="24">
-                            <h1 class="layout-copy">西安音乐学院考试系统</h1>
-                        </Col>
+
+
+                <div class="layout-breadcrumb">
+                    <Row type="flex">
+                        <i-col span="4.5">
+                            <Breadcrumb>
+                                <Breadcrumb-item href="www.baidu.com">首页</Breadcrumb-item>
+                                <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
+                                <Breadcrumb-item>某应用</Breadcrumb-item>
+                            </Breadcrumb>
+                        </i-col>
                     </Row>
                 </div>
-                <div class="layout-breadcrumb">
-                    <Breadcrumb>
-                        <Breadcrumb-item href="www.baidu.com">首页</Breadcrumb-item>
-                        <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
-                        <Breadcrumb-item>某应用</Breadcrumb-item>
-                    </Breadcrumb>
-                </div>
+
                 <div class="layout-content">
-                    <div class="layout-content-main">内容区域</div>
+                    <Tabs type="card" closable>
+                        <Tab-pane label="标签一">
+                            <H1>标签一的内容</H1>
+                        </Tab-pane>
+                        <Tab-pane label="标签二">标签二的内容</Tab-pane>
+                        <Tab-pane label="标签三">标签三的内容</Tab-pane>
+                    </Tabs>
                 </div>
                 <div class="layout-copy">
-                    2011-2016 &copy; TalkingData
+                    0-2020 &copy; Dev
                 </div>
+                <!--<div class="layout-header">-->
+
+                <!--</div>-->
+
             </i-col>
         </Row>
     </div>
 </template>
 <script>
+    import LeftPage from '@/components/LeftPage'
     export default {
+        components:{
+            LeftPage
+        },
         name:"index02"
     }
 </script>
@@ -74,11 +59,14 @@
         padding: 10px 15px 0;
     }
     .layout-content{
-        min-height: 450px;
+        min-height: 800px;
         margin: 15px;
         overflow: hidden;
         background: #fff;
         border-radius: 4px;
+    }
+    .layout-menu-left{
+        background: #464c5b;
     }
     .layout-content-main{
         padding: 10px;
@@ -88,19 +76,11 @@
         padding: 10px 0 20px;
         color: #9ea7b4;
     }
-    .layout-menu-left{
-        background: #464c5b;
-    }
+
     .layout-header{
         height: 60px;
         background: #fff;
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
     }
-    .layout-logo-left{
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
-    }
+
 </style>

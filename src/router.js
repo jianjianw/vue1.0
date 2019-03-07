@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Index from './views/Index.vue'
 import Index02 from './views/Index02.vue'
 import Index03 from './views/Index03.vue'
+import Index04 from './views/Index04.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/index03',
       name: 'index03',
       component:Index03
+    },
+    {
+      path: '/index04',
+      name: 'index04',
+      component:Index04
     }
   ]
 })
