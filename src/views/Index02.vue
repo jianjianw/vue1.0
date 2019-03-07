@@ -431,6 +431,35 @@
             }
         },
         name:"index02"
+        <!--
+            <Menu
+        ref="side_menu"
+    :active-name="activeMenuName"
+    :open-names="openMenuName"
+    theme="light"
+    width="230px"
+    :class="menuitemClasses"
+                    @on-select="choosedMenu"
+    v-if="!isCollapsed">
+        <template v-for="(menu,menu_index) in menus">
+        <Submenu :name="menu.name" v-if="menu.children" :key="menu_index">
+        <template slot="title">
+        <Icon :size="20" :type="menu.icon"></Icon>
+        <span>{{menu.title}}</span>
+    </template>
+    <MenuItem :name="child.name" v-for="(child ,child_index) in menu.children" :key="child_index">
+        <Icon :size="20" :type="child.icon"></Icon>
+        <span>{{child.title}}</span>
+    </MenuItem>
+    </Submenu>
+    <MenuItem :name="menu.name" v-if="!menu.children && menu.showInMenus" :key="menu_index">
+        <Icon :size="20" :type="menu.icon" :key="menu_index"></Icon>
+        <span>{{menu.title}}</span>
+    </MenuItem>
+    </template>
+    </Menu>
+
+        -->
     }
 </script>
 
