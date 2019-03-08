@@ -24,11 +24,6 @@
             this.axios.get("http://jsonplaceholder.typicode.com/users").then(body => {
                 this.message = body.data;
             })
-            // this.axios.get("http://localhost:8081/dev/admin/find").then(body => {
-            //     this.message = body.toString();
-            //
-            // })
-
         }
     }
 </script>

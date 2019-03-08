@@ -1,10 +1,12 @@
 <template>
-    
+    <div>
+        0-2020 &copy; Dev   test
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Foot"
+        name: "foot"
     }
 </script>
 

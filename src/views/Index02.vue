@@ -2,7 +2,7 @@
     <div class="layout">
         <Row type="flex">
             <i-col span="5" class="layout-menu-left">
-                <left-page/>
+                <left-page v-on:eventName="updateTag($event)"/>
             </i-col>
             <i-col span="19">
                 <div class="layout-breadcrumb">
@@ -18,20 +18,28 @@
                 </div>
 
                 <div class="layout-content">
-                    <Tabs type="card" closable>
-                        <Tab-pane label="标签一">
-                            <H1>标签一的内容</H1>
+                    <!--<Tabs type="card" closable>-->
+                        <!--<Tab-pane label="标签一">-->
+                            <!--<H1>标签一的内容</H1>-->
+                            <!--{{message}}-->
+                        <!--</Tab-pane>-->
+                        <!--<Tab-pane label="标签二">-->
+                            <!--{{tagName}}-->
+                        <!--</Tab-pane>-->
+                        <!--<Tab-pane label="标签三">标签三的内容</Tab-pane>-->
+                    <!--</Tabs>-->
+
+                    <Tabs type="card" closable :animated="false">
+                        <Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag">
+                            <H1>{{tag}}</H1>
                             {{message}}
                         </Tab-pane>
-                        <Tab-pane label="标签二">标签二的内容</Tab-pane>
-                        <Tab-pane label="标签三">标签三的内容</Tab-pane>
                     </Tabs>
                 </div>
                 <div class="layout-copy">
-                    0-2020 &copy; Dev
+                   <foot/>
                 </div>
                 <!--<div class="layout-header">-->
-
                 <!--</div>-->
 
             </i-col>
@@ -40,21 +48,35 @@
 </template>
 <script>
     import LeftPage from '@/components/LeftPage'
+    import Foot from "@/components/Foot";
     export default {
         components:{
-            LeftPage
+            LeftPage,Foot
         },
         name:"index02",
         data(){
             return {
-                message:""
+                message:"",
+                tags:[
+
+                ]
             }
         },
         mounted(){
             this.axios.get("http://jsonplaceholder.typicode.com/users").then(body => {
                 this.message = body.data;
             })
-
+        },
+        methods:{
+            updateTag(tagName){
+                for (var i=0;i<this.tags.length;i++)
+                {
+                    if(this.tags[i] == tagName){
+                        return;
+                    }
+                }
+                this.tags.push(tagName)
+            }
         }
     }
 </script>

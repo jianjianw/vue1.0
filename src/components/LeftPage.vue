@@ -1,7 +1,7 @@
 <template>
     <Menu    width="auto"
-            :active-name="activeMenuName"
-            :open-names="openMenuName"
+            active-name="activeMenuName"
+            open-names="openMenuName"
             theme="dark"
             @on-select="choosedMenu">
         <template v-for="(menu,menu_index) in menus">
@@ -10,7 +10,7 @@
                     <Icon :size="20" :type="menu.icon"></Icon>
                     <span>{{menu.title}}</span>
                 </template>
-                <MenuItem :name="child.name" v-for="(child ,child_index) in menu.children" :key="child_index" :to="child.href">
+                <MenuItem :name="child.name" v-for="(child ,child_index) in menu.children" :key="child_index" >
                     <Icon :size="20" :type="child.icon"></Icon>
                     <span>{{child.title}}</span>
                 </MenuItem>
@@ -47,7 +47,7 @@
                         children:[
                             {
                                 title:'制定比赛计划',
-                                name:'memberManage',
+                                name:'制定比赛计划',
                                 href:'/plan',
                                 closable:true,
                                 showInTags:false,
@@ -56,7 +56,7 @@
                             },
                             {
                                 title:'安排考试',
-                                name:'memberLevels',
+                                name:'安排考试',
                                 href:'/plan',
                                 closable:true,
                                 showInTags:false,
@@ -65,7 +65,7 @@
                             },
                             {
                                 title:'新增考试',
-                                name:'memberRemit',
+                                name:'新增考试',
                                 href:'/plan',
                                 closable:true,
                                 showInTags:false,
@@ -200,11 +200,8 @@
         },
         methods:{
              choosedMenu(name){
-                alert(name)
-                this.axios.get("http://localhost:8081/dev/admin/find").then(body => {
-                    this.menus = body.data;
-                    alert(this.menus);
-                })
+                // alert(name)
+                 this.$emit("eventName",name);
              }
 
         }
