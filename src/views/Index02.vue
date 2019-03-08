@@ -29,10 +29,12 @@
                         <!--<Tab-pane label="标签三">标签三的内容</Tab-pane>-->
                     <!--</Tabs>-->
 
-                    <Tabs type="card" closable :animated="false">
-                        <Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag">
-                            <H1>{{tag}}</H1>
-                            {{message}}
+                    <Tabs type="card" closable @on-tab-remove="handleTabRemove" >
+                        <Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag"
+                                   icon="logo-windows">
+                            <!--<H1>{{tag}}</H1>-->
+                            <!--{{message}}-->
+                            nimei
                         </Tab-pane>
                     </Tabs>
                 </div>
@@ -57,9 +59,7 @@
         data(){
             return {
                 message:"",
-                tags:[
-
-                ]
+                tags:[]
             }
         },
         mounted(){
@@ -76,7 +76,13 @@
                     }
                 }
                 this.tags.push(tagName)
+            },
+            handleTabRemove (name) {
+                alert(name);
+                // this.tags
+                // this['tab' + name] = false;
             }
+
         }
     }
 </script>
