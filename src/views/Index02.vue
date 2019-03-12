@@ -17,31 +17,37 @@
                     </Row>
                 </div>
 
-                <div class="layout-content">
-                    <!--<Tabs type="card" closable>-->
-                        <!--<Tab-pane label="标签一">-->
-                            <!--<H1>标签一的内容</H1>-->
-                            <!--{{message}}-->
+                <!--<div class="layout-content">-->
+                    <!--<Tabs type="card" closable @on-tab-remove="handleTabRemove" >-->
+                        <!--<Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag"-->
+                                   <!--icon="logo-windows">-->
+                            <!--&lt;!&ndash;<H1>{{tag}}</H1>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{{message}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;<user-info/>&ndash;&gt;-->
                         <!--</Tab-pane>-->
-                        <!--<Tab-pane label="标签二">-->
-                            <!--{{tagName}}-->
-                        <!--</Tab-pane>-->
-                        <!--<Tab-pane label="标签三">标签三的内容</Tab-pane>-->
                     <!--</Tabs>-->
+                <!--</div>-->
+                <!--<div class="layout-content">-->
+                    <!--<Tabs type="card" closable @on-tab-remove="handleTabRemove" >-->
+                        <!--<Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag"-->
+                                  <!--icon="logo-windows">-->
+                            <!--&lt;!&ndash;<H1>{{tag}}</H1>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{{message}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;<user-info/>&ndash;&gt;-->
+                        <!--</Tab-pane>-->
+                    <!--</Tabs>-->
+                <!--</div>-->
 
-                    <Tabs type="card" closable @on-tab-remove="handleTabRemove" >
-                        <Tab-pane :label="tag" v-for="tag in tags" :key="tag" :name="tag"
-                                   icon="logo-windows">
-                            <!--<H1>{{tag}}</H1>-->
-                            <!--{{message}}-->
-                            nimei
-                        </Tab-pane>
-                    </Tabs>
+                <div class="layout-content">
+                    <div class="layout-content-main">
+                        <router-view/>
+                    </div>
                 </div>
                 <div class="layout-copy">
                    <foot/>
                 </div>
                 <!--<div class="layout-header">-->
+                    <!---->
                 <!--</div>-->
 
             </i-col>
@@ -51,39 +57,45 @@
 <script>
     import LeftPage from '@/components/LeftPage'
     import Foot from "@/components/Foot";
+    import UserInfo from "@/views/user/UserInfo.vue";
     export default {
         components:{
-            LeftPage,Foot
+            LeftPage,Foot,UserInfo
         },
         name:"index02",
         data(){
             return {
                 message:"",
-                tags:[]
+                tags:[],
             }
         },
-        mounted(){
-            this.axios.get("http://jsonplaceholder.typicode.com/users").then(body => {
-                this.message = body.data;
-            })
-        },
-        methods:{
-            updateTag(tagName){
-                for (var i=0;i<this.tags.length;i++)
-                {
-                    if(this.tags[i] == tagName){
-                        return;
-                    }
-                }
-                this.tags.push(tagName)
-            },
-            handleTabRemove (name) {
-                alert(name);
-                // this.tags
-                // this['tab' + name] = false;
-            }
-
-        }
+        // mounted(){
+        //     this.axios.get("http://jsonplaceholder.typicode.com/users").then(body => {
+        //         this.message = body.data;
+        //     })
+        // },
+        // methods:{
+        //     updateTag(tagName){
+        //         for (var i=0;i<this.tags.length;i++)
+        //         {
+        //             if(this.tags[i] == tagName){
+        //                 return;
+        //             }
+        //         }
+        //         alert(tagName)
+        //         this.tags.push(tagName)
+        //     },
+        //     handleTabRemove (tagName) {
+        //         alert(tagName);
+        //         for(let i=0;i<this.tags;i++){
+        //             if(this.tags === tagName){
+        //                 this.tags.splice(i,1);
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //
+        // }
     }
 </script>
 

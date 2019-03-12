@@ -12,7 +12,9 @@
                 </template>
                 <MenuItem :name="child.name" v-for="(child ,child_index) in menu.children" :key="child_index" >
                     <Icon :size="20" :type="child.icon"></Icon>
-                    <span>{{child.title}}</span>
+                    <!--<span>{{child.title}}</span>-->
+                    <span><router-link :to="child.href">{{child.title}}</router-link></span>
+
                 </MenuItem>
             </Submenu>
             <MenuItem :name="menu.name" v-if="!menu.children && menu.showInMenus" :key="menu_index">
@@ -185,9 +187,18 @@
                         icon:'ios-people',
                         children:[
                             {
-                                title:'考试通知',
-                                name:'system-notice',
-                                href:'/student',
+                                title:'学生信息',
+                                name:'学生信息',
+                                href:'/user/info',
+                                closable:true,
+                                showInTags:false,
+                                showInMenus:true,
+                                choosed:false
+                            },
+                            {
+                                title:'所有信息',
+                                name:'所有信息',
+                                href:'/user/list',
                                 closable:true,
                                 showInTags:false,
                                 showInMenus:true,
